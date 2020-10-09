@@ -1,0 +1,30 @@
+Vars:
+  - Minutes:
+    one: "minute"
+    other: "minutes"
+  - Houses:
+    one: "house"
+    other: "houses"
+  - Pronoun:
+    "=1": "She"
+    "=2": "They"
+
+VarTemplatePlural:
+  one: "${Pronoun} is awesome!"
+  other: "({$Pronoun}) have %[3]d ${Houses}."
+  "=5": "{{call .InlineJoin .Names}} are awesome."
+
+# The number in %[] is the variadic position
+# The number in ${} is the above variable name
+YouLate: "You are %[1]d ${Minutes} late."
+HouseCount: "%[2]s has %[1]d ${Houses}."
+
+# You can set messages for specific counts: =x
+FreeDay:
+  "=3": "You have three days and %[2]d ${Minutes} off."
+  one: "You have a day off."
+  other: "You have %[1]d free days."
+
+# You can setup sections
+Welcome:
+  Message: "Welcome {{.Name}}"
